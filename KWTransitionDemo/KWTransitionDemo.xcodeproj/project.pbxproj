@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45903AF818D982D800641AEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903AF718D982D800641AEC /* Foundation.framework */; };
+		45903AFA18D982D800641AEC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903AF918D982D800641AEC /* CoreGraphics.framework */; };
+		45903AFC18D982D800641AEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903AFB18D982D800641AEC /* UIKit.framework */; };
+		45903B0218D982D800641AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45903B0018D982D800641AEC /* InfoPlist.strings */; };
+		45903B0418D982D800641AEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B0318D982D800641AEC /* main.m */; };
+		45903B0818D982D800641AEC /* KWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B0718D982D800641AEC /* KWAppDelegate.m */; };
+		45903B0B18D982D800641AEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45903B0918D982D800641AEC /* Main.storyboard */; };
+		45903B0E18D982D800641AEC /* KWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B0D18D982D800641AEC /* KWViewController.m */; };
+		45903B1018D982D800641AEC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45903B0F18D982D800641AEC /* Images.xcassets */; };
+		45903B1718D982D800641AEC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903B1618D982D800641AEC /* XCTest.framework */; };
+		45903B1818D982D800641AEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903AF718D982D800641AEC /* Foundation.framework */; };
+		45903B1918D982D800641AEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45903AFB18D982D800641AEC /* UIKit.framework */; };
+		45903B2118D982D900641AEC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45903B1F18D982D800641AEC /* InfoPlist.strings */; };
+		45903B2318D982D900641AEC /* KWTransitionDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B2218D982D900641AEC /* KWTransitionDemoTests.m */; };
+		45903B3118D983B800641AEC /* KWTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B3018D983B800641AEC /* KWTransition.m */; };
+		45903B3518D9843000641AEC /* KWModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45903B3318D9843000641AEC /* KWModalViewController.m */; };
+		45903B3618D9843000641AEC /* KWModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45903B3418D9843000641AEC /* KWModalViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45903B1A18D982D800641AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45903AEC18D982D800641AEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45903AF318D982D800641AEC;
+			remoteInfo = KWTransitionDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		45903AF418D982D800641AEC /* KWTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KWTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45903AF718D982D800641AEC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		45903AF918D982D800641AEC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		45903AFB18D982D800641AEC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		45903AFF18D982D800641AEC /* KWTransitionDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KWTransitionDemo-Info.plist"; sourceTree = "<group>"; };
+		45903B0118D982D800641AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		45903B0318D982D800641AEC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		45903B0518D982D800641AEC /* KWTransitionDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KWTransitionDemo-Prefix.pch"; sourceTree = "<group>"; };
+		45903B0618D982D800641AEC /* KWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KWAppDelegate.h; sourceTree = "<group>"; };
+		45903B0718D982D800641AEC /* KWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KWAppDelegate.m; sourceTree = "<group>"; };
+		45903B0A18D982D800641AEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		45903B0C18D982D800641AEC /* KWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KWViewController.h; sourceTree = "<group>"; };
+		45903B0D18D982D800641AEC /* KWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KWViewController.m; sourceTree = "<group>"; };
+		45903B0F18D982D800641AEC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		45903B1518D982D800641AEC /* KWTransitionDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KWTransitionDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45903B1618D982D800641AEC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		45903B1E18D982D800641AEC /* KWTransitionDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KWTransitionDemoTests-Info.plist"; sourceTree = "<group>"; };
+		45903B2018D982D800641AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		45903B2218D982D900641AEC /* KWTransitionDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KWTransitionDemoTests.m; sourceTree = "<group>"; };
+		45903B2F18D983B800641AEC /* KWTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWTransition.h; path = ../KWTransition.h; sourceTree = "<group>"; };
+		45903B3018D983B800641AEC /* KWTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KWTransition.m; path = ../KWTransition.m; sourceTree = "<group>"; };
+		45903B3218D9843000641AEC /* KWModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWModalViewController.h; sourceTree = "<group>"; };
+		45903B3318D9843000641AEC /* KWModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWModalViewController.m; sourceTree = "<group>"; };
+		45903B3418D9843000641AEC /* KWModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KWModalViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45903AF118D982D800641AEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903AFA18D982D800641AEC /* CoreGraphics.framework in Frameworks */,
+				45903AFC18D982D800641AEC /* UIKit.framework in Frameworks */,
+				45903AF818D982D800641AEC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45903B1218D982D800641AEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903B1718D982D800641AEC /* XCTest.framework in Frameworks */,
+				45903B1918D982D800641AEC /* UIKit.framework in Frameworks */,
+				45903B1818D982D800641AEC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45903AEB18D982D800641AEC = {
+			isa = PBXGroup;
+			children = (
+				45903B2F18D983B800641AEC /* KWTransition.h */,
+				45903B3018D983B800641AEC /* KWTransition.m */,
+				45903AFD18D982D800641AEC /* KWTransitionDemo */,
+				45903B1C18D982D800641AEC /* KWTransitionDemoTests */,
+				45903AF618D982D800641AEC /* Frameworks */,
+				45903AF518D982D800641AEC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		45903AF518D982D800641AEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45903AF418D982D800641AEC /* KWTransitionDemo.app */,
+				45903B1518D982D800641AEC /* KWTransitionDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45903AF618D982D800641AEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45903AF718D982D800641AEC /* Foundation.framework */,
+				45903AF918D982D800641AEC /* CoreGraphics.framework */,
+				45903AFB18D982D800641AEC /* UIKit.framework */,
+				45903B1618D982D800641AEC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45903AFD18D982D800641AEC /* KWTransitionDemo */ = {
+			isa = PBXGroup;
+			children = (
+				45903B0618D982D800641AEC /* KWAppDelegate.h */,
+				45903B0718D982D800641AEC /* KWAppDelegate.m */,
+				45903B0918D982D800641AEC /* Main.storyboard */,
+				45903B0C18D982D800641AEC /* KWViewController.h */,
+				45903B0D18D982D800641AEC /* KWViewController.m */,
+				45903B0F18D982D800641AEC /* Images.xcassets */,
+				45903AFE18D982D800641AEC /* Supporting Files */,
+				45903B3218D9843000641AEC /* KWModalViewController.h */,
+				45903B3318D9843000641AEC /* KWModalViewController.m */,
+				45903B3418D9843000641AEC /* KWModalViewController.xib */,
+			);
+			path = KWTransitionDemo;
+			sourceTree = "<group>";
+		};
+		45903AFE18D982D800641AEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45903AFF18D982D800641AEC /* KWTransitionDemo-Info.plist */,
+				45903B0018D982D800641AEC /* InfoPlist.strings */,
+				45903B0318D982D800641AEC /* main.m */,
+				45903B0518D982D800641AEC /* KWTransitionDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45903B1C18D982D800641AEC /* KWTransitionDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				45903B2218D982D900641AEC /* KWTransitionDemoTests.m */,
+				45903B1D18D982D800641AEC /* Supporting Files */,
+			);
+			path = KWTransitionDemoTests;
+			sourceTree = "<group>";
+		};
+		45903B1D18D982D800641AEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45903B1E18D982D800641AEC /* KWTransitionDemoTests-Info.plist */,
+				45903B1F18D982D800641AEC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45903AF318D982D800641AEC /* KWTransitionDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45903B2618D982D900641AEC /* Build configuration list for PBXNativeTarget "KWTransitionDemo" */;
+			buildPhases = (
+				45903AF018D982D800641AEC /* Sources */,
+				45903AF118D982D800641AEC /* Frameworks */,
+				45903AF218D982D800641AEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KWTransitionDemo;
+			productName = KWTransitionDemo;
+			productReference = 45903AF418D982D800641AEC /* KWTransitionDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45903B1418D982D800641AEC /* KWTransitionDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45903B2918D982D900641AEC /* Build configuration list for PBXNativeTarget "KWTransitionDemoTests" */;
+			buildPhases = (
+				45903B1118D982D800641AEC /* Sources */,
+				45903B1218D982D800641AEC /* Frameworks */,
+				45903B1318D982D800641AEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45903B1B18D982D800641AEC /* PBXTargetDependency */,
+			);
+			name = KWTransitionDemoTests;
+			productName = KWTransitionDemoTests;
+			productReference = 45903B1518D982D800641AEC /* KWTransitionDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45903AEC18D982D800641AEC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = KW;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Kurt Wagner";
+				TargetAttributes = {
+					45903B1418D982D800641AEC = {
+						TestTargetID = 45903AF318D982D800641AEC;
+					};
+				};
+			};
+			buildConfigurationList = 45903AEF18D982D800641AEC /* Build configuration list for PBXProject "KWTransitionDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 45903AEB18D982D800641AEC;
+			productRefGroup = 45903AF518D982D800641AEC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45903AF318D982D800641AEC /* KWTransitionDemo */,
+				45903B1418D982D800641AEC /* KWTransitionDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45903AF218D982D800641AEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903B3618D9843000641AEC /* KWModalViewController.xib in Resources */,
+				45903B1018D982D800641AEC /* Images.xcassets in Resources */,
+				45903B0218D982D800641AEC /* InfoPlist.strings in Resources */,
+				45903B0B18D982D800641AEC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45903B1318D982D800641AEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903B2118D982D900641AEC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45903AF018D982D800641AEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903B0E18D982D800641AEC /* KWViewController.m in Sources */,
+				45903B0818D982D800641AEC /* KWAppDelegate.m in Sources */,
+				45903B3118D983B800641AEC /* KWTransition.m in Sources */,
+				45903B3518D9843000641AEC /* KWModalViewController.m in Sources */,
+				45903B0418D982D800641AEC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45903B1118D982D800641AEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45903B2318D982D900641AEC /* KWTransitionDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45903B1B18D982D800641AEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45903AF318D982D800641AEC /* KWTransitionDemo */;
+			targetProxy = 45903B1A18D982D800641AEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		45903B0018D982D800641AEC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45903B0118D982D800641AEC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		45903B0918D982D800641AEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45903B0A18D982D800641AEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		45903B1F18D982D800641AEC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45903B2018D982D800641AEC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		45903B2418D982D900641AEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		45903B2518D982D900641AEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45903B2718D982D900641AEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KWTransitionDemo/KWTransitionDemo-Prefix.pch";
+				INFOPLIST_FILE = "KWTransitionDemo/KWTransitionDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		45903B2818D982D900641AEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KWTransitionDemo/KWTransitionDemo-Prefix.pch";
+				INFOPLIST_FILE = "KWTransitionDemo/KWTransitionDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		45903B2A18D982D900641AEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KWTransitionDemo.app/KWTransitionDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KWTransitionDemo/KWTransitionDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KWTransitionDemoTests/KWTransitionDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		45903B2B18D982D900641AEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KWTransitionDemo.app/KWTransitionDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KWTransitionDemo/KWTransitionDemo-Prefix.pch";
+				INFOPLIST_FILE = "KWTransitionDemoTests/KWTransitionDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45903AEF18D982D800641AEC /* Build configuration list for PBXProject "KWTransitionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45903B2418D982D900641AEC /* Debug */,
+				45903B2518D982D900641AEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45903B2618D982D900641AEC /* Build configuration list for PBXNativeTarget "KWTransitionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45903B2718D982D900641AEC /* Debug */,
+				45903B2818D982D900641AEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		45903B2918D982D900641AEC /* Build configuration list for PBXNativeTarget "KWTransitionDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45903B2A18D982D900641AEC /* Debug */,
+				45903B2B18D982D900641AEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45903AEC18D982D800641AEC /* Project object */;
+}
