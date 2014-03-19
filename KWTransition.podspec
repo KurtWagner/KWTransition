@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name			=	'KWTransition'
-  s.version			=	'0.0.1'
+  s.version			=	'0.0.2'
   s.license			=	{ :type => 'MIT', :file => 'LICENSE' }
   s.summary			=	'Experimental Implementations of UIViewControllerAnimatedTransitioning'
   s.homepage			=	'https://github.com/KurtWagner/KWTransition'
