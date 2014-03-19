@@ -2,6 +2,13 @@
 
 Experimental Implementations of UIViewControllerAnimatedTransitioning.
 
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionFadeBackOver.gif "KWTransitionFadeBackOver")
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionRotateFromTop.gif "KWTransitionRotateFromTop")
+
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleBounceIn.gif "KWTransitionStyleBounceIn")
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleDropOut.gif "KWTransitionStyleDropOut")
+
 ## Requirements
 
 - Objective-C ARC
@@ -59,6 +66,10 @@ You can manually install this library by copying the `KWTransition.h` and `KWTra
 	    KWModalViewController *VC = [[KWModalViewController alloc] init];
 	    VC.transitioningDelegate = self;
 	    [self presentViewController:VC animated:YES completion:nil];
+
+## Contributing
+
+All contributions are welcome! Please feel free to improve existing or submit your own transitions.
 
 ## License
 
