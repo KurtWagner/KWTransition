@@ -35,7 +35,17 @@ typedef NS_ENUM(NSUInteger, KWTransitionStyle){
 	KWTransitionStyleStepBackSwipe,
 	KWTransitionStyleUp,
 	KWTransitionStylePushUp,
-	KWTransitionStyleFall
+	KWTransitionStyleFall,
+	KWTransitionStyleSink
+};
+
+typedef NS_OPTIONS(NSUInteger, KWTransitionSetting){
+	KWTransitionSettingNone = 0,
+	KWTransitionSettingDirectionRight = 1 << 0,
+	KWTransitionSettingDirectionLeft = 1 << 1,
+	KWTransitionSettingDirectionDown = 1 << 2,
+	KWTransitionSettingDirectionUp = 1 << 3,
+	KWTransitionSettingReverse = 1 << 5
 };
 
 @interface KWTransition : NSObject<UIViewControllerAnimatedTransitioning>
@@ -48,6 +58,9 @@ typedef NS_ENUM(NSUInteger, KWTransitionStyle){
 
 /// The duration of the transition
 @property (nonatomic) NSTimeInterval duration;
+
+/// The settings of the transitions
+@property (nonatomic) KWTransitionSetting settings;
 
 /**
  *  Creates a transition manager object for you.

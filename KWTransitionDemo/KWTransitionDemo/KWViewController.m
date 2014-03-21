@@ -63,6 +63,10 @@
 			@"name" : @"KWTransitionStyleRotateFromTop",
 			@"style" : @(KWTransitionStyleRotateFromTop)
 		},
+		@{
+			@"name" : @"KWTransitionStyleSink",
+			@"style" : @(KWTransitionStyleSink)
+		}
 	];
 }
 
@@ -94,6 +98,10 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	self.transition.style = [[[self.transitions objectAtIndex:indexPath.row] objectForKey:@"style"] unsignedIntegerValue];
+	
+	if (self.transition.style == KWTransitionStyleSink) {
+		self.transition.settings = KWTransitionSettingDirectionDown;
+	}
 	
 	KWModalViewController *VC = [[KWModalViewController alloc] init];
 	VC.transitioningDelegate = self;
