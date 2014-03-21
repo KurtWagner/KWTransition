@@ -31,6 +31,11 @@ typedef NS_ENUM(NSUInteger, KWTransitionStyle){
 	KWTransitionStyleFadeBackOver,
 	KWTransitionStyleBounceIn,
 	KWTransitionStyleDropOut,
+	KWTransitionStyleStepBackScroll,
+	KWTransitionStyleStepBackSwipe,
+	KWTransitionStyleUp,
+	KWTransitionStylePushUp,
+	KWTransitionStyleFall
 };
 
 @interface KWTransition : NSObject<UIViewControllerAnimatedTransitioning>

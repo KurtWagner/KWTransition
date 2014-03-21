@@ -23,7 +23,8 @@
 #import "KWTransition.h"
 
 @interface KWTransition ()
-@property (nonatomic, strong) UIView *overlayView;
+@property (nonatomic, strong) UIView *overlayViewA;
+@property (nonatomic, strong) UIView *overlayViewB;
 @end
 
 @implementation KWTransition
@@ -52,6 +53,9 @@
 			CGAffineTransform rotation;
 			rotation = CGAffineTransformMakeRotation(M_PI);
 			fromVC.view.frame = fromRect;
+			
+			CGPoint fromAnchorPoint = fromVC.view.layer.anchorPoint;
+			CGPoint fromPosition = fromVC.view.layer.position;
 			fromVC.view.layer.anchorPoint = CGPointMake(0.5, 0.0);
 			fromVC.view.layer.position = CGPointMake(160.0, 0);
 
@@ -67,16 +71,24 @@
 				toVC.view.transform = CGAffineTransformMakeRotation(0);
 			} completion:^(__unused BOOL finished) {
 				[transitionContext completeTransition:YES];
+				
+				fromVC.view.layer.anchorPoint = fromAnchorPoint;
+				fromVC.view.layer.position = fromPosition;
 			}];
 		} else {
 			CGAffineTransform rotation;
 			rotation = CGAffineTransformMakeRotation(M_PI);
+			
+			CGPoint fromAnchorPoint = fromVC.view.layer.anchorPoint;
+			CGPoint fromPosition = fromVC.view.layer.position;
 			fromVC.view.frame = fromRect;
 			fromVC.view.layer.anchorPoint = CGPointMake(0.5, 0.0);
 			fromVC.view.layer.position = CGPointMake(160.0, 0);
 
 			[inView insertSubview:toVC.view belowSubview:fromVC.view];
 
+			CGPoint toAnchorPoint = toVC.view.layer.anchorPoint;
+			CGPoint toPosition = toVC.view.layer.position;
 			toVC.view.layer.anchorPoint = CGPointMake(0.5, 0.0);
 			toVC.view.layer.position = CGPointMake(160.0, 0);
 			toVC.view.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -86,12 +98,17 @@
 				toVC.view.transform = CGAffineTransformMakeRotation(-0);
 			} completion:^(__unused BOOL finished) {
 				[transitionContext completeTransition:YES];
+				
 				fromVC.view.center = inView.center;
+				fromVC.view.layer.anchorPoint = fromAnchorPoint;
+				fromVC.view.layer.position = fromPosition;
+				toVC.view.layer.anchorPoint = toAnchorPoint;
+				toVC.view.layer.position = toPosition;
 			}];
 		}
 	} else if (self.style == KWTransitionStyleBounceIn) {
 		if (self.action == KWTransitionStepPresent) {
-			[self addOverlayToViewController:fromVC.view];
+			[self addOverlayAToView:fromVC.view];
 			
 			[inView addSubview:toVC.view];
 			CGPoint centerOffScreen = inView.center;
@@ -101,7 +118,7 @@
 
 			[UIView animateWithDuration:1.f delay:0.f usingSpringWithDamping:0.4f initialSpringVelocity:6.f options:UIViewAnimationOptionCurveEaseIn animations:^{
 				toVC.view.center = inView.center;
-				self.overlayView.alpha = 0.3f;
+				self.overlayViewA.alpha = 0.3f;
 			} completion:^(__unused BOOL finished) {
 				[transitionContext completeTransition:YES];
 			}];
@@ -119,24 +136,18 @@
 				}];
 				[UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
 					fromVC.view.center = centerOffScreen;
-					
-					if (self.overlayView) {
-						self.overlayView.alpha = 0;
-					}
+					self.overlayViewA.alpha = 0;
 				}];
 			} completion:^(__unused BOOL finished) {
-				if (self.overlayView) {
-					[self.overlayView removeFromSuperview];
-					self.overlayView = nil;
-				}
-			
+				[self.overlayViewA removeFromSuperview];
+				self.overlayViewA = nil;
 				[transitionContext completeTransition:YES];
 			}];
 		}
 	} else if (self.style == KWTransitionStyleFadeBackOver) {
 		if (self.action == KWTransitionStepPresent) {
 			
-			[self addOverlayToViewController:fromVC.view];
+			[self addOverlayAToView:fromVC.view];
 			[inView addSubview:toVC.view];
 			
 			CGPoint centerOffScreen = inView.center;
@@ -154,10 +165,10 @@
 					t.m34 = 1.0/ -500;
 					t = CATransform3DRotate(t, 14.0f * M_PI / 180.0f, 1, 0, 0);
 					fromVC.view.layer.transform = t;
-					self.overlayView.alpha = 0.3f;
+					self.overlayViewA.alpha = 0.3f;
 				}];
 				[UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.5f animations:^{
-					self.overlayView.alpha = 0.8f;
+					self.overlayViewA.alpha = 0.8f;
 					fromVC.view.center = fromVCCenterOffScreen;
 					fromVC.view.transform = CGAffineTransformMakeScale(fromScale, fromScale);
 				}];
@@ -195,22 +206,16 @@
 					t.m34 = 1.0/ -500;
 					t = CATransform3DRotate(t, 14.0f * M_PI / 180.0f, 1, 0, 0);
 					toVC.view.layer.transform = t;
-					if (self.overlayView) {
-						self.overlayView.alpha = 0.3f;
-					}
+					self.overlayViewA.alpha = 0.3f;
 				}];
 				[UIView addKeyframeWithRelativeStartTime:.3f relativeDuration:.2f animations:^{
 					toVC.view.transform = CGAffineTransformMakeScale(1, 1);
 					toVC.view.center = toVCCenterOffScreenFinal;
-					if (self.overlayView) {
-						self.overlayView.alpha = 0.f;
-					}
+					self.overlayViewA.alpha = 0.f;
 				}];
 			} completion:^(__unused BOOL finished) {
-				if (self.overlayView) {
-					[self.overlayView removeFromSuperview];
-					self.overlayView = nil;
-				}
+				[self.overlayViewA removeFromSuperview];
+				self.overlayViewA = nil;
 				[transitionContext completeTransition:YES];
 			}];
 		}
@@ -240,21 +245,254 @@
 			} completion:^(__unused BOOL finished) {
 				[transitionContext completeTransition:YES];
 			}];
-			
-			
-			
 		}
+	} else if (self.style == KWTransitionStyleUp) {
+
+		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+		
+		fromVC.view.frame = fromRect;
+		[inView addSubview:toVC.view];
+
+		CGPoint toCenter = inView.center;
+		toCenter.y += direction * CGRectGetHeight(inView.bounds);
+		toVC.view.center = toCenter;
+		
+		[UIView animateWithDuration:.4f delay:.0f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			CGPoint fromCenter = inView.center;
+			fromCenter.y -= direction * CGRectGetHeight(inView.bounds);
+			fromVC.view.center = fromCenter;
+			toVC.view.center = inView.center;
+		} completion:^(__unused BOOL finished) {
+			[transitionContext completeTransition:YES];
+		}];
+			
+		
+	} else if (self.style == KWTransitionStylePushUp) {
+		
+		fromVC.view.frame = fromRect;
+		[inView addSubview:toVC.view];
+		if (self.action == KWTransitionStepPresent) {
+			CGPoint toCenter = inView.center;
+			toCenter.y += CGRectGetHeight(inView.bounds);
+			toVC.view.center = toCenter;
+			
+			[UIView animateWithDuration:.2f animations:^{
+				CGPoint downCenter = inView.center;
+				downCenter.y += 25;
+				fromVC.view.center = downCenter;
+			} completion:^(__unused BOOL finished) {
+				[UIView animateWithDuration:.4f delay:.0f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+					CGPoint fromCenter = inView.center;
+					fromCenter.y -= CGRectGetHeight(inView.bounds);
+					fromVC.view.center = fromCenter;
+					toVC.view.center = inView.center;
+				} completion:^(__unused BOOL finished) {
+					[transitionContext completeTransition:YES];
+				}];
+			}];
+		} else {
+			CGPoint toCenter = inView.center;
+			toCenter.y -= CGRectGetHeight(inView.bounds);
+			toVC.view.center = toCenter;
+			
+			[UIView animateWithDuration:.3f delay:.0f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+				CGPoint fromCenter = inView.center;
+				fromCenter.y += CGRectGetHeight(inView.bounds);
+				fromVC.view.center = fromCenter;
+				toVC.view.center = inView.center;
+			} completion:^(__unused BOOL finished) {
+				[transitionContext completeTransition:YES];
+			}];
+		}
+	} else if (self.style == KWTransitionStyleStepBackSwipe) {
+
+		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+		
+		fromVC.view.frame = fromRect;
+		CGFloat scale = 0.65f;
+		[inView insertSubview:toVC.view belowSubview:fromVC.view];
+		toVC.view.frame = fromRect;
+
+		CATransform3D toTransform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(scale, scale));
+		toTransform.m34 = 1.0/ -500;
+		toVC.view.layer.transform = CATransform3DRotate(toTransform, -40.0f * M_PI / 180.0f, 1, 0, 0);
+			
+		CGPoint toCenter = fromVC.view.center;
+		toCenter.y *= scale;
+		toVC.view.center = toCenter;
+		toVC.view.alpha = 0;
+		[inView bringSubviewToFront:fromVC.view];
+		
+		[self addOverlayAToView:fromVC.view];
+		[self addOverlayBToView:toVC.view];
+		self.overlayViewB.alpha = 0.1f;
+		[UIView animateWithDuration:0.5f delay:.0f usingSpringWithDamping:0.6f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+
+			CATransform3D transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(scale, scale));
+			transform.m34 = 1.0/ -500;
+			fromVC.view.layer.transform = CATransform3DRotate(transform, -40.0f * M_PI / 180.0f, 1, 0, 0);
+			
+			CGPoint fromCenter = fromVC.view.center;
+			fromCenter.y *= (scale + .1);
+			fromVC.view.center = fromCenter;
+
+			self.overlayViewA.alpha = 0.1f;
+			
+		} completion:^(__unused BOOL finished) {
+			toVC.view.alpha = 1;
+			[UIView animateWithDuration:1.5f delay:.0f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			
+				CGPoint fromCenter = inView.center;
+				fromCenter.y *= (scale + .1);
+				fromCenter.x = direction * -2 * CGRectGetWidth(inView.bounds);
+				fromVC.view.center = fromCenter;
+				
+			} completion:^(__unused BOOL finished) {
+			
+				[UIView animateWithDuration:0.25f delay:.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+				
+					toVC.view.center = inView.center;
+			
+					CATransform3D transform = CATransform3DIdentity;
+					transform.m34 = 1.0/ -500;
+					toVC.view.layer.transform = transform;
+					self.overlayViewB.alpha = 0;
+					
+				} completion:^(__unused BOOL finished) {
+				
+					[transitionContext completeTransition:YES];
+					[self.overlayViewA removeFromSuperview];
+					[self.overlayViewB removeFromSuperview];
+					self.overlayViewA = nil;
+					self.overlayViewB = nil;
+					
+				}];
+			}];
+		}];
+	} else if (self.style == KWTransitionStyleStepBackScroll) {
+
+		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+
+		fromVC.view.frame = fromRect;
+		CGFloat scale = 0.65f;
+		[inView addSubview: toVC.view];
+		toVC.view.frame = fromRect;
+
+		CATransform3D toTransform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(scale, scale));
+		toTransform.m34 = 1.0/ -500;
+		toVC.view.layer.transform = CATransform3DRotate(toTransform, -40.0f * M_PI / 180.0f, 1, 0, 0);
+			
+		CGPoint toCenter = fromVC.view.center;
+		toCenter.y *= scale;
+		toCenter.x = direction * -2 * CGRectGetWidth(inView.bounds);
+		toVC.view.center = toCenter;
+		
+		[self addOverlayAToView:fromVC.view];
+		[self addOverlayBToView:toVC.view];
+		self.overlayViewB.alpha = 0.1f;
+		[UIView animateWithDuration:.4f delay:.0f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+
+			CATransform3D transform = CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(scale, scale));
+			transform.m34 = 1.0/ -500;
+			fromVC.view.layer.transform = CATransform3DRotate(transform, -40.0f * M_PI / 180.0f, 1, 0, 0);
+			
+			CGPoint fromCenter = fromVC.view.center;
+			fromCenter.y *= (scale + .1);
+			fromVC.view.center = fromCenter;
+
+			self.overlayViewA.alpha = 0.1f;
+			
+		} completion:^(__unused BOOL finished) {
+		
+			[UIView animateWithDuration:.4f delay:.03f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			
+				CGPoint fromCenter = inView.center;
+				fromCenter.y *= (scale + .1);
+				fromCenter.x = direction * 2 * CGRectGetWidth(inView.bounds);
+				fromVC.view.center = fromCenter;
+			
+				CGPoint c = inView.center;
+				c.y *= (scale + .1);
+				toVC.view.center = c;
+				
+			} completion:^(__unused BOOL finished) {
+			
+				[UIView animateWithDuration:.4f delay:.03f options:UIViewAnimationOptionCurveEaseIn animations:^{
+				
+					toVC.view.center = inView.center;
+			
+					CATransform3D transform = CATransform3DIdentity;
+					transform.m34 = 1.0/ -500;
+					toVC.view.layer.transform = transform;
+					self.overlayViewB.alpha = 0;
+					
+				} completion:^(__unused BOOL finished) {
+				
+					[transitionContext completeTransition:YES];
+					[self.overlayViewA removeFromSuperview];
+					[self.overlayViewB removeFromSuperview];
+					self.overlayViewA = nil;
+					self.overlayViewB = nil;
+					
+				}];
+			}];
+		}];
+	} else if (self.style == KWTransitionStyleFall) {
+		[inView addSubview:toVC.view];
+		[inView bringSubviewToFront:fromVC.view];
+		
+		fromVC.view.frame = fromRect;
+		toVC.view.frame = inView.frame;
+		
+		CGPoint fromAnchorPoint = fromVC.view.layer.anchorPoint;
+		CGPoint fromPosition = fromVC.view.layer.position;
+		fromVC.view.layer.anchorPoint = CGPointMake(0.0, 0.0);
+		fromVC.view.layer.position = CGPointMake(0.0, 0);
+		
+		[self addOverlayAToView:toVC.view];
+		self.overlayViewA.alpha = 0.2f;
+		
+		[UIView animateWithDuration:1.5f delay:0 usingSpringWithDamping:0.3f initialSpringVelocity:2.f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			fromVC.view.transform = CGAffineTransformMakeRotation(30 * M_PI / 180.0);
+			self.overlayViewA.alpha = 0.1f;
+		} completion:nil];
+		
+		[UIView animateWithDuration:.4f delay:0.7f options:UIViewAnimationOptionCurveEaseIn animations:^{
+			CGPoint center = inView.center;
+			center.y = 2 * CGRectGetHeight(inView.bounds);
+			center.x -= 20;
+			fromVC.view.center = center;
+			self.overlayViewA.alpha = 0.f;
+		} completion:^(BOOL finished) {
+			[transitionContext completeTransition:YES];
+			
+			[self.overlayViewA removeFromSuperview];
+			self.overlayViewA = nil;
+			
+			fromVC.view.layer.anchorPoint = fromAnchorPoint;
+			fromVC.view.layer.position = fromPosition;
+		}];
 	}
 }
 
-- (void)addOverlayToViewController:(UIView *)view {
-	if (self.overlayView) {
-		[self.overlayView removeFromSuperview];
+- (void)addOverlayAToView:(UIView *)view {
+	if (self.overlayViewA) {
+		[self.overlayViewA removeFromSuperview];
 	}
-	self.overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.bounds), CGRectGetHeight(view.bounds))];
-	self.overlayView.backgroundColor = [UIColor blackColor];
-	self.overlayView.alpha = 0.f;
-	[view addSubview:self.overlayView];
+	self.overlayViewA = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.bounds), CGRectGetHeight(view.bounds))];
+	self.overlayViewA.backgroundColor = [UIColor blackColor];
+	self.overlayViewA.alpha = 0.f;
+	[view addSubview:self.overlayViewA];
+}
+
+- (void)addOverlayBToView:(UIView *)view {
+	if (self.overlayViewB) {
+		[self.overlayViewB removeFromSuperview];
+	}
+	self.overlayViewB = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.bounds), CGRectGetHeight(view.bounds))];
+	self.overlayViewB.backgroundColor = [UIColor blackColor];
+	self.overlayViewB.alpha = 0.f;
+	[view addSubview:self.overlayViewB];
 }
 
 @end

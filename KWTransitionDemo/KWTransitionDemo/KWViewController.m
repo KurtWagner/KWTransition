@@ -28,10 +28,6 @@
 	_transition = [KWTransition manager];
 	_transitions = @[
 		@{
-			@"name" : @"KWTransitionStyleRotateFromTop",
-			@"style" : @(KWTransitionStyleRotateFromTop)
-		},
-		@{
 			@"name" : @"KWTransitionStyleFadeBackOver",
 			@"style" : @(KWTransitionStyleFadeBackOver)
 		},
@@ -42,7 +38,31 @@
 		@{
 			@"name": @"KWTransitionStyleDropOut",
 			@"style": @(KWTransitionStyleDropOut)
-		}
+		},
+		@{
+			@"name": @"KWTransitionStyleStepBackScroll",
+			@"style": @(KWTransitionStyleStepBackScroll)
+		},
+		@{
+			@"name": @"KWTransitionStyleStepBackSwipe",
+			@"style": @(KWTransitionStyleStepBackSwipe)
+		},
+		@{
+			@"name": @"KWTransitionStylePushUp",
+			@"style": @(KWTransitionStylePushUp)
+		},
+		@{
+			@"name": @"KWTransitionStyleUp",
+			@"style": @(KWTransitionStyleUp)
+		},
+		@{
+			@"name": @"KWTransitionStyleFall",
+			@"style": @(KWTransitionStyleFall)
+		},
+		@{
+			@"name" : @"KWTransitionStyleRotateFromTop",
+			@"style" : @(KWTransitionStyleRotateFromTop)
+		},
 	];
 }
 
