@@ -105,7 +105,7 @@ All styles support the `KWTransitionSettingReverse` setting.
 
 Supports:  `KWTransitionSettingDirectionRight`, `KWTransitionSettingDirectionLeft`, `KWTransitionSettingDirectionDown`, `KWTransitionSettingDirectionUp` and `KWTransitionSettingReverse`.
 
-Sample is using: `KWTransitionSettingDirectionUp`
+Sample is using: `KWTransitionSettingDirectionDown`
 
 ![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleSink.gif "KWTransitionStyleSink")
 
