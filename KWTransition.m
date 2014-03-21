@@ -49,7 +49,9 @@
 	UIView* inView = [transitionContext containerView];
 
 	if (self.style == KWTransitionStyleRotateFromTop) {
-		if (self.action == KWTransitionStepPresent){
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
+			
 			CGAffineTransform rotation;
 			rotation = CGAffineTransformMakeRotation(M_PI);
 			fromVC.view.frame = fromRect;
@@ -107,7 +109,9 @@
 			}];
 		}
 	} else if (self.style == KWTransitionStyleBounceIn) {
-		if (self.action == KWTransitionStepPresent) {
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
+			
 			[self addOverlayAToView:fromVC.view];
 			
 			[inView addSubview:toVC.view];
@@ -145,7 +149,8 @@
 			}];
 		}
 	} else if (self.style == KWTransitionStyleFadeBackOver) {
-		if (self.action == KWTransitionStepPresent) {
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
 			
 			[self addOverlayAToView:fromVC.view];
 			[inView addSubview:toVC.view];
@@ -220,7 +225,8 @@
 			}];
 		}
 	} else if (self.style == KWTransitionStyleDropOut) {
-		if (self.action == KWTransitionStepPresent) {
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
 			
 			[inView insertSubview:toVC.view belowSubview:fromVC.view];
 			[UIView animateKeyframesWithDuration:.6f delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
@@ -248,7 +254,8 @@
 		}
 	} else if (self.style == KWTransitionStyleUp) {
 
-		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+		NSInteger direction = ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) ? 1 : -1;
 		
 		fromVC.view.frame = fromRect;
 		[inView addSubview:toVC.view];
@@ -271,7 +278,8 @@
 		
 		fromVC.view.frame = fromRect;
 		[inView addSubview:toVC.view];
-		if (self.action == KWTransitionStepPresent) {
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
 			CGPoint toCenter = inView.center;
 			toCenter.y += CGRectGetHeight(inView.bounds);
 			toVC.view.center = toCenter;
@@ -306,7 +314,8 @@
 		}
 	} else if (self.style == KWTransitionStyleStepBackSwipe) {
 
-		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+		NSInteger direction = ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) ? 1 : -1;
 		
 		fromVC.view.frame = fromRect;
 		CGFloat scale = 0.65f;
@@ -371,7 +380,8 @@
 		}];
 	} else if (self.style == KWTransitionStyleStepBackScroll) {
 
-		NSInteger direction = (self.action == KWTransitionStepPresent) ? 1 : -1;
+		NSInteger direction = ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) ? 1 : -1;
 
 		fromVC.view.frame = fromRect;
 		CGFloat scale = 0.65f;
@@ -437,6 +447,85 @@
 				}];
 			}];
 		}];
+	} else if (self.style == KWTransitionStyleSink) {
+		if ((self.action == KWTransitionStepPresent && !(self.settings & KWTransitionSettingReverse)) ||
+			(self.action == KWTransitionStepDismiss && (self.settings & KWTransitionSettingReverse))) {
+			[inView addSubview:toVC.view];
+			
+			fromVC.view.frame = fromRect;
+			toVC.view.frame = inView.frame;
+
+			[self addOverlayAToView:fromVC.view];
+			
+			CGPoint center = inView.center;
+			if (self.settings & KWTransitionSettingDirectionRight) {
+				center.x += CGRectGetWidth(fromVC.view.bounds);
+			} else if (self.settings & KWTransitionSettingDirectionLeft) {
+				center.x -= CGRectGetWidth(fromVC.view.bounds);
+			}
+			if (self.settings & KWTransitionSettingDirectionDown) {
+				center.y += CGRectGetHeight(fromVC.view.bounds);
+			} else if (self.settings & KWTransitionSettingDirectionUp) {
+				center.y -= CGRectGetHeight(fromVC.view.bounds);
+			}
+			toVC.view.center = center;
+			
+			CGFloat scale = .7f;
+			toVC.view.transform = CGAffineTransformMakeScale(scale, scale);
+			[UIView animateKeyframesWithDuration:.5f delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+				[UIView addKeyframeWithRelativeStartTime:0.f relativeDuration:.5f animations:^{
+					self.overlayViewA.alpha = 0.3f;
+					toVC.view.center = inView.center;
+				}];
+				[UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:.5f animations:^{
+					self.overlayViewA.alpha = 0.0f;
+					toVC.view.transform = CGAffineTransformMakeScale(1.f,1.f);
+				}];
+			} completion:^(__unused BOOL finished) {
+				[transitionContext completeTransition:YES];
+				
+				[self.overlayViewA removeFromSuperview];
+				self.overlayViewA = nil;
+			}];
+		} else {
+			[inView addSubview:toVC.view];
+			[inView bringSubviewToFront:fromVC.view];
+			
+			fromVC.view.frame = fromRect;
+			toVC.view.frame = inView.frame;
+
+			[self addOverlayAToView:toVC.view];
+			
+			CGFloat scale = .7f;
+			[UIView animateKeyframesWithDuration:.5f delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+				[UIView addKeyframeWithRelativeStartTime:0.f relativeDuration:.5f animations:^{
+					self.overlayViewA.alpha = 0.3f;
+					fromVC.view.transform = CGAffineTransformMakeScale(scale, scale);
+				}];
+				[UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:.5f animations:^{
+					self.overlayViewA.alpha = 0.0f;
+					
+					CGPoint center = inView.center;
+					if (self.settings & KWTransitionSettingDirectionRight) {
+						center.x += CGRectGetWidth(fromVC.view.bounds);
+					} else if (self.settings & KWTransitionSettingDirectionLeft) {
+						center.x -= CGRectGetWidth(fromVC.view.bounds);
+					}
+					if (self.settings & KWTransitionSettingDirectionDown) {
+						center.y += CGRectGetHeight(fromVC.view.bounds);
+					} else if (self.settings & KWTransitionSettingDirectionUp) {
+						center.y -= CGRectGetHeight(fromVC.view.bounds);
+					}
+					
+					fromVC.view.center = center;
+				}];
+			} completion:^(__unused BOOL finished) {
+				[transitionContext completeTransition:YES];
+				
+				[self.overlayViewA removeFromSuperview];
+				self.overlayViewA = nil;
+			}];
+		}
 	} else if (self.style == KWTransitionStyleFall) {
 		[inView addSubview:toVC.view];
 		[inView bringSubviewToFront:fromVC.view];

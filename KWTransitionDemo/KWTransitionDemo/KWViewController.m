@@ -63,6 +63,10 @@
 			@"name" : @"KWTransitionStyleRotateFromTop",
 			@"style" : @(KWTransitionStyleRotateFromTop)
 		},
+		@{
+			@"name" : @"KWTransitionStyleSink",
+			@"style" : @(KWTransitionStyleSink)
+		}
 	];
 }
 
