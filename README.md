@@ -2,45 +2,6 @@
 
 Experimental Implementations of UIViewControllerAnimatedTransitioning.
 
-##Styles
-
-####KWTransitionFadeBackOver
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionFadeBackOver.gif "KWTransitionFadeBackOver")
-
-####KWTransitionRotateFromTop
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionRotateFromTop.gif "KWTransitionRotateFromTop")
-
-####KWTransitionStyleUp
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleUp.gif "KWTransitionStyleUp")
-
-####KWTransitionStylePushUp
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStylePushUp.gif "KWTransitionStylePushUp")
-
-####KWTransitionStyleFall
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleFall.gif "KWTransitionStyleFall")
-
-####KWTransitionStyleStepBackScroll
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackScroll.gif "KWTransitionStyleStepBackScroll")
-
-####KWTransitionStyleBounceIn
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleBounceIn.gif "KWTransitionStyleBounceIn")
-
-####KWTransitionStyleDropOut
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleDropOut.gif "KWTransitionStyleDropOut")
-
-####KWTransitionStyleStepBackSwipe
-
-![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackSwipe.gif "KWTransitionStyleStepBackSwipe")
-
-
 ## Requirements
 
 - Objective-C ARC
@@ -98,6 +59,75 @@ You can manually install this library by copying the `KWTransition.h` and `KWTra
 	    KWModalViewController *VC = [[KWModalViewController alloc] init];
 	    VC.transitioningDelegate = self;
 	    [self presentViewController:VC animated:YES completion:nil];
+
+##Styles
+
+All styles support the `KWTransitionSettingReverse` setting.
+
+####KWTransitionFadeBackOver
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionFadeBackOver.gif "KWTransitionFadeBackOver")
+
+####KWTransitionRotateFromTop
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionRotateFromTop.gif "KWTransitionRotateFromTop")
+
+####KWTransitionStyleUp
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleUp.gif "KWTransitionStyleUp")
+
+####KWTransitionStylePushUp
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStylePushUp.gif "KWTransitionStylePushUp")
+
+####KWTransitionStyleFall
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleFall.gif "KWTransitionStyleFall")
+
+####KWTransitionStyleStepBackScroll
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackScroll.gif "KWTransitionStyleStepBackScroll")
+
+####KWTransitionStyleBounceIn
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleBounceIn.gif "KWTransitionStyleBounceIn")
+
+####KWTransitionStyleDropOut
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleDropOut.gif "KWTransitionStyleDropOut")
+
+####KWTransitionStyleStepBackSwipe
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackSwipe.gif "KWTransitionStyleStepBackSwipe")
+
+
+####KWTransitionStyleSink
+
+Supports:  `KWTransitionSettingDirectionRight`, `KWTransitionSettingDirectionLeft`, `KWTransitionSettingDirectionDown`, `KWTransitionSettingDirectionUp` and `KWTransitionSettingReverse`.
+
+Sample is using: `KWTransitionSettingDirectionUp`
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleSink.gif "KWTransitionStyleSink")
+
+## Settings
+
+You can manipulate the way some transitions behave by setting the manager's `settings` property. e.g,
+
+    manager.style = KWTransitionStyleSink;
+    manager.settings = KWTransitionSettingDirectionUp | KWTransitionSettingDirectionRight | KWTransitionSettingReverse; 
+
+Would result in the transition operating against the top right corner performing the present and dismiss in reverse animation.
+
+Below are the available settings. As not all styles support or settings (yet), please refer to the style documentation found at the start of this document for specific style support.
+
+    typedef NS_OPTIONS(NSUInteger, KWTransitionSetting){
+	    KWTransitionSettingNone = 0,
+	    KWTransitionSettingDirectionRight = 1 << 0,
+	    KWTransitionSettingDirectionLeft = 1 << 1,
+	    KWTransitionSettingDirectionDown = 1 << 2,
+	    KWTransitionSettingDirectionUp = 1 << 3,
+	    KWTransitionSettingReverse = 1 << 5
+    };
 
 ## Contributing
 
