@@ -2,12 +2,44 @@
 
 Experimental Implementations of UIViewControllerAnimatedTransitioning.
 
+##Styles
+
+####KWTransitionFadeBackOver
+
 ![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionFadeBackOver.gif "KWTransitionFadeBackOver")
+
+####KWTransitionRotateFromTop
+
 ![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionRotateFromTop.gif "KWTransitionRotateFromTop")
 
+####KWTransitionStyleUp
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleUp.gif "KWTransitionStyleUp")
+
+####KWTransitionStylePushUp
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStylePushUp.gif "KWTransitionStylePushUp")
+
+####KWTransitionStyleFall
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleFall.gif "KWTransitionStyleFall")
+
+####KWTransitionStyleStepBackScroll
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackScroll.gif "KWTransitionStyleStepBackScroll")
+
+####KWTransitionStyleBounceIn
 
 ![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleBounceIn.gif "KWTransitionStyleBounceIn")
+
+####KWTransitionStyleDropOut
+
 ![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleDropOut.gif "KWTransitionStyleDropOut")
+
+####KWTransitionStyleStepBackSwipe
+
+![](https://raw.github.com/KurtWagner/KWTransition/master/Sample/KWTransitionStyleStepBackSwipe.gif "KWTransitionStyleStepBackSwipe")
+
 
 ## Requirements
 
@@ -94,5 +126,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
