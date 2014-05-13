@@ -182,6 +182,7 @@
 			[UIView animateWithDuration:.5f delay:.5f usingSpringWithDamping:0.8f initialSpringVelocity:.4f options:UIViewAnimationOptionCurveEaseIn animations:^{
 				toVC.view.center = inView.center;
 			} completion:^(__unused BOOL finished) {
+                fromVC.view.transform=CGAffineTransformIdentity;
 				[transitionContext completeTransition:YES];
 			}];
 			
@@ -239,6 +240,7 @@
 					fromVC.view.alpha = 0;
 				}];
 			} completion:^(__unused BOOL finished) {
+                fromVC.view.transform=CGAffineTransformIdentity;
 				[transitionContext completeTransition:YES];
 			}];
 		} else {
@@ -553,13 +555,13 @@
 			fromVC.view.center = center;
 			self.overlayViewA.alpha = 0.f;
 		} completion:^(BOOL finished) {
-			[transitionContext completeTransition:YES];
-			
+
 			[self.overlayViewA removeFromSuperview];
 			self.overlayViewA = nil;
-			
+            fromVC.view.transform = CGAffineTransformIdentity;
 			fromVC.view.layer.anchorPoint = fromAnchorPoint;
 			fromVC.view.layer.position = fromPosition;
+			[transitionContext completeTransition:YES];
 		}];
 	}
 }
