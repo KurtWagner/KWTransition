@@ -8,7 +8,7 @@ Experimental Implementations of UIViewControllerAnimatedTransitioning.
 - iOS 7 or above
 
 ## Installation
-### Cocoapods
+### CocoaPods
 
     pod 'KWTransition'
 
